@@ -13,4 +13,5 @@ export class Book {
   Writer: Writer[] = [];
   Publisher: Publisher|null = null;
   Category: Category|null = null;
+
 }
