@@ -1,1 +1,21 @@
-<p>book-card works!</p>
+<mat-card class="book-card" *ngIf="book">
+  <mat-card-header>
+    <mat-card-title>{{book.Title}}</mat-card-title>
+    <mat-card-subtitle>{{book.Subtitle}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="assets/images/book.png" alt="{{book.Title}} - Book cover">
+  <mat-card-content>
+    <p>
+      {{book.Resume}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-icon-button color="primary" aria-label="Editar">
+      <mat-icon>mode_edit</mat-icon>
+    </button>
+
+    <button mat-icon-button color="warn" aria-label="Excluir">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>
