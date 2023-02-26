@@ -3,8 +3,8 @@
 
     <mat-toolbar color="primary">Gêneros Disponíveis</mat-toolbar>
 
-    <div *ngIf="categories$ | async as categories; else loading">
-      <table mat-table [dataSource]="categories" class="mat-elevation-z8">
+    <div *ngIf="categoriesDataSource; else loading">
+      <table mat-table [dataSource]="categoriesDataSource" class="mat-elevation-z8">
 
         <!-- Name Column -->
         <ng-container matColumnDef="Name">
@@ -26,9 +26,9 @@
         <ng-container matColumnDef="Delete">
           <th mat-header-cell *matHeaderCellDef></th>
           <td mat-cell *matCellDef="let category">
-            <a mat-icon-button color="primary" aria-label="Deletar Gênero">
+            <button mat-icon-button color="primary" aria-label="Deletar Gênero" (click)="onDeleteClick(category.id, category.name)">
               <mat-icon>delete</mat-icon>
-            </a>
+            </button>
           </td>
         </ng-container>
 
