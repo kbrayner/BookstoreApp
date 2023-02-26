@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { Category } from '../../model/category';
 import { catchError, delay, first, of, tap } from 'rxjs';
@@ -24,5 +24,12 @@ export class CategoriesService {
         return of([])
       })
     );
+  }
+
+  listByName(name: string) {
+    // Setup name query parameter filter
+    let params = new HttpParams().set('name', name);
+
+    return this.httpClient.get<Category[]>(this.API, {params: params});
   }
 }

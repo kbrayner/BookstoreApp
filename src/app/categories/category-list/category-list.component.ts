@@ -21,7 +21,7 @@ export class CategoryListComponent implements OnInit {
   }
 
   onSubmit(): void{
-    alert(this.categoryNameFilter);
+    this.categories$ = this.categoriesService.listByName(this.categoryNameFilter);
   }
 
 }
