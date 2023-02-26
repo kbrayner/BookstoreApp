@@ -1,12 +1,12 @@
 <mat-card class="book-card" *ngIf="book">
   <mat-card-header>
-    <mat-card-title>{{book.Title}}</mat-card-title>
-    <mat-card-subtitle>{{book.Subtitle}}</mat-card-subtitle>
+    <mat-card-title>{{book.title}}</mat-card-title>
+    <mat-card-subtitle>{{book.subtitle}}</mat-card-subtitle>
   </mat-card-header>
-  <img mat-card-image src="assets/images/book.png" alt="{{book.Title}} - Book cover">
+  <img mat-card-image src="assets/images/book.png" alt="{{book.title}} - Book cover">
   <mat-card-content>
     <p>
-      {{book.Resume}}
+      {{book.resume}}
     </p>
   </mat-card-content>
   <mat-card-actions>

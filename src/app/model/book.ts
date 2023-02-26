@@ -3,15 +3,15 @@ import { Publisher } from './publisher';
 import { Writer } from './writer';
 
 export class Book {
-  Id?: number;
-  Title: string = '';
-  Subtitle?: string;
-  Resume?: string;
-  PagesNumber: number|null = null;
-  ReleaseDate: Date|null = null;
-  Edition: number|null = null;
-  Writer: Writer[] = [];
-  Publisher: Publisher|null = null;
-  Category: Category|null = null;
+  id?: number;
+  title: string = '';
+  subtitle?: string;
+  resume?: string;
+  pagesNumber: number|null = null;
+  releaseDate: Date|null = null;
+  edition: number|null = null;
+  writer: Writer[] = [];
+  publisher: Publisher|null = null;
+  category: Category|null = null;
 
 }

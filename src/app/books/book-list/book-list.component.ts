@@ -13,14 +13,14 @@ export class BookListComponent implements OnInit {
 
   constructor() {
     let book1 = new Book();
-    book1.Title = "Title1";
-    book1.Subtitle = "Subtitle1";
-    book1.Resume = "Resume1";
+    book1.title = "Title1";
+    book1.subtitle = "Subtitle1";
+    book1.resume = "Resume1";
 
     let book2 = new Book();
-    book2.Title = "Title2";
-    book2.Subtitle = "Subtitle2";
-    book2.Resume = "Resume2";
+    book2.title = "Title2";
+    book2.subtitle = "Subtitle2";
+    book2.resume = "Resume2";
 
     this.books = [book1,book2];
    }
