@@ -32,4 +32,16 @@ export class CategoriesService {
 
     return this.httpClient.get<Category[]>(this.API, {params: params});
   }
+
+  getById(id: number) {
+    return this.httpClient.get<Category>(`${this.API}/${id}`);
+  }
+
+  create(category: Category) {
+    return this.httpClient.post<Category>(this.API, category);
+  }
+
+  edit(id: number, category: Category) {
+    return this.httpClient.put<Category>(`${this.API}/${id}`, category);
+  }
 }
