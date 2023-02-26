@@ -44,4 +44,8 @@ export class CategoriesService {
   edit(id: number, category: Category) {
     return this.httpClient.put<Category>(`${this.API}/${id}`, category);
   }
+
+  deleteById(id: number) {
+    return this.httpClient.delete<number>(`${this.API}/${id}`);
+  }
 }
