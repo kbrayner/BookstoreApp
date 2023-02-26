@@ -12,12 +12,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { CategoriesRoutingModule } from './categories-routing.module';
 import { CategoryListComponent } from './category-list/category-list.component';
 import { CategoryTableComponent } from './category-table/category-table.component';
+import { CategoryCreateUpdateComponent } from './category-create-update/category-create-update.component';
 
 
 @NgModule({
   declarations: [
     CategoryTableComponent,
-    CategoryListComponent
+    CategoryListComponent,
+    CategoryCreateUpdateComponent
   ],
   imports: [
     CommonModule,
