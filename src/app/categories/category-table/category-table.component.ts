@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Category } from '../../model/category';
 import { CategoriesService } from '../services/categories.service';
 
@@ -9,15 +10,16 @@ import { CategoriesService } from '../services/categories.service';
 })
 export class CategoryTableComponent implements OnInit {
 
-  categories: Category[] = [
-    { Id: 1, Name:'Romance' }
-  ];
+  categories: Observable<Category[]>;
   displayedColumns = ['Name','Edit','Delete'];
 
-  constructor(private categoriesService: CategoriesService) { }
+  constructor(private categoriesService: CategoriesService) {
+
+    this.categories = this.categoriesService.list();
+  }
 
   ngOnInit(): void {
-    this.categories = this.categoriesService.list();
+
   }
 
 }
