@@ -1,1 +1,19 @@
-<p>category-list works!</p>
+<div class="category-list-container">
+  <div class="category-list-content">
+
+    <form class="category-form" (ngSubmit)="onSubmit()">
+      <mat-form-field class="category-form-field">
+        <mat-label>Gênero</mat-label>
+        <input name="categoryNameFilter" matInput placeholder="Pesquisar gênero" [(ngModel)]="categoryNameFilter">
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!categoryNameFilter">
+        Buscar
+      </button>
+    </form>
+
+    <app-category-table [categories$]="categories$"></app-category-table>
+
+  </div>
+</div>
+

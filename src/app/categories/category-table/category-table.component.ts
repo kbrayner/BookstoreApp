@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Category } from '../../model/category';
-import { CategoriesService } from '../services/categories.service';
 
 @Component({
   selector: 'app-category-table',
@@ -10,12 +9,13 @@ import { CategoriesService } from '../services/categories.service';
 })
 export class CategoryTableComponent implements OnInit {
 
-  categories$: Observable<Category[]>;
+  @Input()
+  categories$: Observable<Category[]> | null;
   displayedColumns = ['Name','Edit','Delete'];
 
-  constructor(private categoriesService: CategoriesService) {
+  constructor() {
+    this.categories$ = null;
 
-    this.categories$ = this.categoriesService.list();
   }
 
   ngOnInit(): void {

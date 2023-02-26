@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoriesService } from '../services/categories.service';
+import { Observable } from 'rxjs';
+import { Category } from '../../model/category';
 
 @Component({
   selector: 'app-category-list',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoryListComponent implements OnInit {
 
-  constructor() { }
+  categoryNameFilter: string = '';
+  categories$: Observable<Category[]>;
+
+  constructor(private categoriesService: CategoriesService) {
+    this.categories$ = this.categoriesService.list();
+   }
 
   ngOnInit(): void {
+  }
+
+  onSubmit(): void{
+    alert(this.categoryNameFilter);
   }
 
 }

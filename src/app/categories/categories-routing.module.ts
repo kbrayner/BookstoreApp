@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
-import { CategoryTableComponent } from './category-table/category-table.component';
 import { RouterModule, Routes } from '@angular/router';
+import { CategoryListComponent } from './category-list/category-list.component';
 
 const routes: Routes = [
-  {path: '', component: CategoryTableComponent}
+  {path: '', component: CategoryListComponent}
 ];
 
 @NgModule({
