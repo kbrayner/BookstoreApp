@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Category } from '../../model/category';
-import { first, tap } from 'rxjs';
+import { catchError, delay, first, of, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,12 @@ export class CategoriesService {
     return this.httpClient.get<Category[]>(this.API)
     .pipe(
       first(),
-      tap(categories => console.log(categories))
+      delay(2),
+      tap(categories => console.log(categories)),
+      catchError(error =>{
+        console.error(error);
+        return of([])
+      })
     );
   }
 }

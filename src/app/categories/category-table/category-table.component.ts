@@ -10,12 +10,12 @@ import { CategoriesService } from '../services/categories.service';
 })
 export class CategoryTableComponent implements OnInit {
 
-  categories: Observable<Category[]>;
+  categories$: Observable<Category[]>;
   displayedColumns = ['Name','Edit','Delete'];
 
   constructor(private categoriesService: CategoriesService) {
 
-    this.categories = this.categoriesService.list();
+    this.categories$ = this.categoriesService.list();
   }
 
   ngOnInit(): void {
