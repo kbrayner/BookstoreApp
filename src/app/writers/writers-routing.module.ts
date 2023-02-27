@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+import { WriterListComponent } from './writer-list/writer-list.component';
+
+const routes: Routes = [
+  {path: '', component: WriterListComponent},
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

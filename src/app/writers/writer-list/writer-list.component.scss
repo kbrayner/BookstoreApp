@@ -1,0 +1,31 @@
+.writer-list-container {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.writer-list-content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  min-width: 500px;
+  max-width: 1000px;
+  min-height: 100%;
+}
+
+.writer-form {
+  width: 100%;
+  padding: 1rem;
+}
+
+.writer-form-field {
+  width: 70%;
+  margin-right: 20px;
+}
+
+.add-button {
+  display: flex;
+  align-self: flex-end;
+  padding: 0 20px;
+}

@@ -1,0 +1,24 @@
+<div class="writer-list-container">
+  <div class="writer-list-content">
+
+
+    <div class="add-button">
+      <a mat-fab color="primary" aria-label="Adicionar Autor" routerLink="create">
+        <mat-icon>add</mat-icon>
+      </a>
+    </div>
+
+    <form class="writer-form" (ngSubmit)="onSubmit()">
+      <mat-form-field class="writer-form-field">
+        <mat-label>Autor</mat-label>
+        <input name="writerNameFilter" matInput placeholder="Pesquisar autor" [(ngModel)]="writerNameFilter">
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" class="button">
+        Buscar
+      </button>
+    </form>
+
+    <app-writer-table [writers$]="writers$"></app-writer-table>
+  </div>
+</div>
