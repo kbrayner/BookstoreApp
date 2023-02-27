@@ -2,6 +2,7 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
 import { first, Observable } from 'rxjs';
 import { Writer } from 'src/app/model/writer';
+
 import { WritersService } from '../services/writers.service';
 
 @Component({
