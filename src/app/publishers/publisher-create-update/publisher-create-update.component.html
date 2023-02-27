@@ -1,0 +1,30 @@
+<div class="publisher-create-update-container">
+  <div class="publisher-create-update-content">
+    <div *ngIf="publisher === undefined">
+      <mat-spinner></mat-spinner>
+    </div>
+
+    <form class="publisher-form" *ngIf="publisher">
+      <mat-form-field class="publisher-form-field">
+        <mat-label>Editora</mat-label>
+        <input
+          name="name"
+          matInput
+          placeholder="Pesquisar editora"
+          [(ngModel)]="publisher.name"
+          required
+        />
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" class="button" (click)="save()">
+        <ng-template *ngIf="publisher.id; then edit; else create"> </ng-template>
+        <ng-template #edit> Editar </ng-template>
+        <ng-template #create> Criar </ng-template>
+      </button>
+    </form>
+
+    <div *ngIf="publisher === null">
+      <p>Não foi possível encontrar a editora</p>
+    </div>
+  </div>
+</div>

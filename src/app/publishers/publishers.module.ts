@@ -12,12 +12,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { PublishersRoutingModule } from './publishers-routing.module';
 import { PublisherTableComponent } from './publisher-table/publisher-table.component';
 import { PublisherListComponent } from './publisher-list/publisher-list.component';
+import { PublisherCreateUpdateComponent } from './publisher-create-update/publisher-create-update.component';
 
 
 @NgModule({
   declarations: [
     PublisherTableComponent,
-    PublisherListComponent
+    PublisherListComponent,
+    PublisherCreateUpdateComponent
   ],
   imports: [
     CommonModule,
