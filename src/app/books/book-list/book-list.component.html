@@ -1,5 +1,34 @@
-<div class="book-list">
-  <div *ngFor="let book of books; index as i;">
-    <app-book-card [book]="book"></app-book-card>
+
+<div class="book-list-container">
+  <div class="book-list-content">
+
+
+    <div class="add-button">
+      <a mat-fab color="primary" aria-label="Adicionar Livro" routerLink="create">
+        <mat-icon>add</mat-icon>
+      </a>
+    </div>
+
+    <form class="book-form" (ngSubmit)="onSubmit()">
+      <mat-form-field class="book-form-field">
+        <mat-label>Livro</mat-label>
+        <input name="bookNameFilter" matInput placeholder="Pesquisar gênero" [(ngModel)]="bookNameFilter">
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" class="button">
+        Buscar
+      </button>
+    </form>
+
+    <ng-template *ngIf="booksDataSource; else loading">
+      <div *ngFor="let book of booksDataSource; index as i;">
+        <app-book-card [book]="book"></app-book-card>
+      </div>
+    </ng-template>
+
+    <ng-template #loading>
+      <mat-spinner></mat-spinner>
+    </ng-template>
   </div>
 </div>
+

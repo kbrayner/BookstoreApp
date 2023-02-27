@@ -1,7 +1,31 @@
-.book-list {
+.book-list-container {
+  width: 100%;
+  min-height: 100%;
   display: flex;
+  justify-content: center;
 }
 
-.book-list>div{
+.book-list-content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  min-width: 500px;
+  max-width: 1000px;
+  min-height: 100%;
+}
+
+.book-form {
+  width: 100%;
   padding: 1rem;
+}
+
+.book-form-field {
+  width: 70%;
+  margin-right: 20px;
+}
+
+.add-button {
+  display: flex;
+  align-self: flex-end;
+  padding: 0 20px;
 }
