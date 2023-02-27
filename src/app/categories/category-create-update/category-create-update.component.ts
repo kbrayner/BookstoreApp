@@ -1,6 +1,6 @@
 import { CategoriesService } from './../services/categories.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from '../../model/category';
 import { catchError, first, of } from 'rxjs';
 
@@ -14,7 +14,7 @@ export class CategoryCreateUpdateComponent implements OnInit {
   // null means error, undefined means loading
   category: Category | null | undefined;
 
-  constructor(private route: ActivatedRoute, private service: CategoriesService) {
+  constructor(private route: ActivatedRoute, private router: Router, private service: CategoriesService) {
     this.category = undefined;
   }
 
@@ -62,7 +62,8 @@ export class CategoryCreateUpdateComponent implements OnInit {
           first()
         ).subscribe( {
           next: category => {
-            alert("Gênero criado com sucesso!")
+            alert("Gênero criado com sucesso!");
+            this.router.navigate(['/categories'])
           },
           error: error => {
             alert("Não foi possível criar o gênero!")

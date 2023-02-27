@@ -1,6 +1,13 @@
 <div class="category-list-container">
   <div class="category-list-content">
 
+
+    <div class="add-button">
+      <a mat-fab color="primary" aria-label="Adicionar Gênero" routerLink="create">
+        <mat-icon>add</mat-icon>
+      </a>
+    </div>
+
     <form class="category-form" (ngSubmit)="onSubmit()">
       <mat-form-field class="category-form-field">
         <mat-label>Gênero</mat-label>
@@ -13,7 +20,5 @@
     </form>
 
     <app-category-table [categories$]="categories$"></app-category-table>
-
   </div>
 </div>
-
