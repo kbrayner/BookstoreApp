@@ -12,12 +12,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { WriterListComponent } from './writer-list/writer-list.component';
 import { WriterTableComponent } from './writer-table/writer-table.component';
 import { WritersRoutingModule } from './writers-routing.module';
+import { WriterCreateUpdateComponent } from './writer-create-update/writer-create-update.component';
 
 
 @NgModule({
   declarations: [
     WriterTableComponent,
-    WriterListComponent
+    WriterListComponent,
+    WriterCreateUpdateComponent
   ],
   imports: [
     CommonModule,
