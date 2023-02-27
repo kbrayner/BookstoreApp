@@ -1,0 +1,48 @@
+<mat-card>
+  <mat-card-content>
+
+    <mat-toolbar color="primary">Autores Disponíveis</mat-toolbar>
+
+    <div *ngIf="writersDataSource; else loading">
+      <table mat-table [dataSource]="writersDataSource" class="mat-elevation-z8">
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="Name">
+          <th mat-header-cell *matHeaderCellDef> Autor </th>
+          <td mat-cell *matCellDef="let writer"> {{ writer.name }} </td>
+        </ng-container>
+
+        <!-- Edit Column -->
+        <ng-container matColumnDef="Edit">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let writer">
+            <a mat-icon-button color="primary" aria-label="Editar Autor" [routerLink]="[writer.id]">
+              <mat-icon>mode_edit</mat-icon>
+            </a>
+          </td>
+        </ng-container>
+
+        <!-- Delete Column -->
+        <ng-container matColumnDef="Delete">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let writer">
+            <button mat-icon-button color="primary" aria-label="Deletar Autor" (click)="onDeleteClick(writer.id, writer.name)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+
+    <ng-template #loading>
+      <mat-spinner></mat-spinner>
+    </ng-template>
+
+  </mat-card-content>
+</mat-card>
+
+
+
