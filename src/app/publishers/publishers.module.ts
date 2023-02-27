@@ -11,11 +11,13 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { PublishersRoutingModule } from './publishers-routing.module';
 import { PublisherTableComponent } from './publisher-table/publisher-table.component';
+import { PublisherListComponent } from './publisher-list/publisher-list.component';
 
 
 @NgModule({
   declarations: [
-    PublisherTableComponent
+    PublisherTableComponent,
+    PublisherListComponent
   ],
   imports: [
     CommonModule,
