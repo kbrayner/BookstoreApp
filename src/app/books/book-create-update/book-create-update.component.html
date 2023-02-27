@@ -1,0 +1,71 @@
+
+<div class="book-container">
+  <div class="book-content">
+
+    <div *ngIf="book === undefined || categories === undefined || writers === undefined || publishers === undefined">
+      <mat-spinner></mat-spinner>
+    </div>
+
+    <form class="book-form" *ngIf="book">
+      <mat-form-field class="book-form-field">
+        <mat-label>Título</mat-label>
+        <input
+          name="title"
+          matInput
+          placeholder="Título"
+          [(ngModel)]="book.title"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field class="book-form-field">
+        <mat-label>Subtítulo</mat-label>
+        <input
+          name="subtitle"
+          matInput
+          placeholder="Subtítulo"
+          [(ngModel)]="book.subtitle"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Gênero</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let category of categories" [value]="selectedCategory">
+            {{category.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Escritor</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let writer of writers" [value]="selectedWriter">
+            {{writer.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Editora</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let publisher of publishers" [value]="selectedPublisher">
+            {{publisher.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" class="button" (click)="save()">
+        <ng-template *ngIf="book.id; then edit; else create"> </ng-template>
+        <ng-template #edit> Editar </ng-template>
+        <ng-template #create> Criar </ng-template>
+      </button>
+    </form>
+
+    <div *ngIf="book === null">
+      <p>Não foi possível encontrar o livro</p>
+    </div>
+
+  </div>
+</div>

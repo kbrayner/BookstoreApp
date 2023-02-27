@@ -1,0 +1,15 @@
+.book-container {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.book-content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  min-width: 500px;
+  max-width: 1000px;
+  min-height: 100%;
+}
