@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
 import { first, Observable } from 'rxjs';
 import { Writer } from 'src/app/model/writer';
@@ -10,7 +10,7 @@ import { WritersService } from '../services/writers.service';
   templateUrl: './writer-table.component.html',
   styleUrls: ['./writer-table.component.scss']
 })
-export class WriterTableComponent implements OnInit {
+export class WriterTableComponent implements OnChanges {
 
   @Input()
   writers$: Observable<Writer[]> | null;
@@ -23,7 +23,13 @@ export class WriterTableComponent implements OnInit {
     this.writersDataSource = undefined;
   }
 
-  ngOnInit(): void {
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['writers$']) {
+      this.subscribeWriterList();
+    }
+  }
+
+  subscribeWriterList(): void {
     this.writers$?.pipe(first()).subscribe({
       next: (writers) => {
         this.writersDataSource = writers;

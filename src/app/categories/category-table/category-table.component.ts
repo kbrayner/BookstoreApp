@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild, SimpleChanges, OnChanges } from '@angular/core';
 import { MatTable } from '@angular/material/table';
 import { Observable, first } from 'rxjs';
 import { Category } from '../../model/category';
@@ -9,7 +9,7 @@ import { CategoriesService } from '../services/categories.service';
   templateUrl: './category-table.component.html',
   styleUrls: ['./category-table.component.scss'],
 })
-export class CategoryTableComponent implements OnInit {
+export class CategoryTableComponent implements OnChanges{
   @Input()
   categories$: Observable<Category[]> | null;
   categoriesDataSource: Category[] | undefined;
@@ -21,7 +21,13 @@ export class CategoryTableComponent implements OnInit {
     this.categoriesDataSource = undefined;
   }
 
-  ngOnInit(): void {
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['categories$']) {
+      this.subscribeCategoryList();
+    }
+  }
+
+  subscribeCategoryList() {
     this.categories$?.pipe(first()).subscribe({
       next: (categories) => {
         this.categoriesDataSource = categories;

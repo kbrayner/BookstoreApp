@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
 import { first, Observable } from 'rxjs';
 import { Publisher } from 'src/app/model/publisher';
@@ -9,7 +9,7 @@ import { PublishersService } from '../services/publishers.service';
   templateUrl: './publisher-table.component.html',
   styleUrls: ['./publisher-table.component.scss']
 })
-export class PublisherTableComponent implements OnInit {
+export class PublisherTableComponent implements OnChanges {
   @Input()
   publishers$: Observable<Publisher[]> | null;
   publishersDataSource: Publisher[] | undefined;
@@ -21,7 +21,13 @@ export class PublisherTableComponent implements OnInit {
     this.publishersDataSource = undefined;
   }
 
-  ngOnInit(): void {
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['publishers$']) {
+      this.subscribePublisherList();
+    }
+  }
+
+  subscribePublisherList(): void {
     this.publishers$?.pipe(first()).subscribe({
       next: (publishers) => {
         this.publishersDataSource = publishers;
