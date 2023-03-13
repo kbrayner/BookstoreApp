@@ -1,4 +1,6 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, first, of } from 'rxjs';
 import { Writer } from 'src/app/model/writer';
@@ -14,6 +16,9 @@ export class WriterCreateUpdateComponent implements OnInit {
 
   // null means error, undefined means loading
   writer: Writer | null | undefined;
+  formGroup =  new FormGroup({
+    Name: new FormControl('', [Validators.required, Validators.maxLength(50)]),
+  });
 
   constructor(private route: ActivatedRoute, private router: Router, private service: WritersService) {
     this.writer = undefined;
@@ -41,6 +46,17 @@ export class WriterCreateUpdateComponent implements OnInit {
     });
   }
 
+  getErrorResponseMessage (error: HttpErrorResponse): string {
+    const validationErrors = error?.error?.errors;
+    let validationErrosMessage = '';
+    if(validationErrors) {
+      if(validationErrors.Name) {
+        validationErrosMessage = error?.error?.errors?.Name?.join('\n');
+      }
+    }
+    return `${error?.error?.title || error.error} \n\n${validationErrosMessage}`;
+  }
+
   save(): void {
     console.log(this.writer);
     if (this.writer) {
@@ -53,8 +69,9 @@ export class WriterCreateUpdateComponent implements OnInit {
             next: writer => {
               alert("Autor atualizado com sucesso!")
             },
-            error: error => {
-              alert("Não foi possível atualizar o autor!")
+            error: (error: HttpErrorResponse) => {
+              console.error(error);
+              alert(`Não foi possível atualizar o Escritor! ${this.getErrorResponseMessage(error)}`);
             }
           });
       } else {
@@ -66,8 +83,9 @@ export class WriterCreateUpdateComponent implements OnInit {
             alert("Autor criado com sucesso!");
             this.router.navigate(['/writers'])
           },
-          error: error => {
-            alert("Não foi possível criar o autor!")
+          error: (error: HttpErrorResponse) => {
+            console.error(error);
+            alert(`Não foi possível criar o Escritor! ${this.getErrorResponseMessage(error)}`);
           }
         });
       }
